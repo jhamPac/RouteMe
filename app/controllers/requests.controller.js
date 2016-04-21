@@ -18,7 +18,15 @@ function getTransType(req) {
 
 exports.create = function(req, res) {
     var request = new Request(req.body);
-    request.transType = getTransType(req.body);
+    request.startLocation = {
+        longitude: req.body.sLong,
+        latitude: req.body.sLat
+    }
+    request.endLocation = {
+        longitude: req.body.eLong,
+        latitude: req.body.eLat
+    }
+    request.transType = getTransType(request.endLocation);
     request.save(function(err) {
         if (err) {
             return res.status(400).send({
