@@ -47,7 +47,7 @@ exports.read = function(req, res) {
 };
 
 exports.requestByID = function(req, res, next, id) {
-    request.findById(id).populate('user', 'name username').exec(function(err, request) {
+    Request.findById(id).populate('user', 'name username').exec(function(err, request) {
         if (err)
         return next(err);
 
