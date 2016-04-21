@@ -2,7 +2,7 @@ var request = require('request-promise');
 var deasync = require('deasync');
 var geolib = require('geolib');
 
-function isOnHill(coord) {
+module.exports = function isOnHill(coord) {
 	var diff = 1 / 111319;
 	var square = [coord];
 	for (var i = -1; i <= 1; i++) {
@@ -38,8 +38,4 @@ function isOnHill(coord) {
 	return false;
 }
 
-hill = isOnHill({longitude:-122.441172, latitude:47.255124});
-notHill = isOnHill({longitude:-122.444844, latitude:47.255058});
 
-console.log("hill: " + hill);
-console.log("not hill: " + notHill);
