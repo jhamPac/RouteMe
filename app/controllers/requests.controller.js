@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Request = mongoose.model('Request');
-var isOnHill = require('../scripts/hill.js')
 
 var getErrorMessage = function(err) {
     if (err.errors) {
@@ -12,13 +11,20 @@ var getErrorMessage = function(err) {
     }
 };
 
-function getTransType(req) {
-    return req.wheelchair && isOnHill(req.endLocation) ? "Shuttle" : "Bus";
-}
-
 exports.create = function(req, res) {
     var request = new Request(req.body);
-    request.transType = getTransType(req.body);
+    if (!request.startLocation) {
+        request.startLocation = {
+            longitude: req.body.sLong,
+            latitude: req.body.sLat
+        }
+    }
+    if (!request.endLocation) {
+        request.endLocation = {
+            longitude: req.body.eLong,
+            latitude: req.body.eLat
+        }
+    }
     request.save(function(err) {
         if (err) {
             return res.status(400).send({
@@ -47,7 +53,7 @@ exports.read = function(req, res) {
 };
 
 exports.requestByID = function(req, res, next, id) {
-    request.findById(id).populate('user', 'name username').exec(function(err, request) {
+    Request.findById(id).populate('user', 'name username').exec(function(err, request) {
         if (err)
         return next(err);
 
