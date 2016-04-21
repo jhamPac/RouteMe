@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var isOnHill = require('../scripts/hill.js')
 
 var Coordinates = {
 	longitude: Number,
@@ -14,5 +15,13 @@ var RequestSchema = new mongoose.Schema({
     transType: String,
     completed: {type: Boolean, default: false}
 });
+
+RequestSchema.pre('save',
+	function(next) {
+		this.transType = this.wheelchair && isOnHill(this.endLocation)
+						? "Shuttle" : "Bus";
+		next();
+	}
+);
 
 mongoose.model('Request', RequestSchema);
