@@ -14,7 +14,7 @@ module.exports = function isOnHill(coord) {
 				});
 		}
 	}
-	// console.log(square);
+
 	var locations = square.map(function(d) {
 		return d.latitude + ',' + d.longitude;
 	}).join('|');
