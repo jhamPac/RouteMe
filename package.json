@@ -2,12 +2,16 @@
   "name": "RouteMe",
   "version": "1.0.0",
   "description": "Project for UWT hackathon",
-  "main": "hill.js",
+  "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "deasync": "^0.1.4",
+    "ejs": "^2.4.1",
     "express": "^4.13.4",
     "geolib": "^2.0.20",
     "http": "0.0.0",
+    "mongoose": "^4.4.12",
+    "mongoose-geojson-schema": "0.0.2",
     "request-promise": "^3.0.0",
     "url": "^0.11.0"
   },

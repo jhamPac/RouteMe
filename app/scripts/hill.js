@@ -3,7 +3,7 @@ var deasync = require('deasync');
 var geolib = require('geolib');
 
 module.exports = function isOnHill(coord) {
-	var diff = 1 / 111319;
+	var diff = 1 / 111319; //degree to meter at equator
 	var square = [coord];
 	for (var i = -1; i <= 1; i++) {
 		for (var j = -1; j <= 1; j++) {
@@ -37,5 +37,3 @@ module.exports = function isOnHill(coord) {
 	}
 	return false;
 }
-
-
