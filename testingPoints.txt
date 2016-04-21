@@ -1,0 +1,17 @@
+
+Point A:
+Bust stop name: Mountain Hwy / 8th
+-122.420996,  47.073143
+spanaway 
+
+Hill
+Point B:
+9th / Broadway
+47.255124, -122.441172
+
+
+Flat
+Point B:
+Tacoma Ave / 9th
+47.255058, -122.444844
+           
